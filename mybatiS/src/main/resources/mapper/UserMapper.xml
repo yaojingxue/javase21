@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.UserMapper">
+    <select id="findById" parameterType="int" resultType="User">
+        SELECT * FROM message WHERE id=#{id}
+
+    </select>
+    <select id="findAll" resultType="com.kaishengit.pojo.User">
+        SELECT * from message
+    </select>
+    <delete id="removeName" parameterType="String">
+        DELETE FROM message WHERE name=#{name}
+    </delete>
+    <insert id="addUser" parameterType="User">
+        INSERT INTO message (name,pwd) VALUES (#{name},#{pwd})
+    </insert>
+    <update id="updateUser" parameterType="com.kaishengit.pojo.User">
+        UPDATE  message SET name=#{name},pwd=#{pwd} where id=#{id}
+    </update>
+
+</mapper>

@@ -35,7 +35,7 @@ public class CardDAOTest {
     @Test
     public  void QueryCardone(){
         cardDAO.QueryCardone("贾乃亮");
-        System.out.println(cardDAO.QueryCardone("贾乃亮"));
+        //System.out.println(cardDAO.QueryCardone("贾乃亮"));
     }
     @Test
     public  void QueryCardall(){
