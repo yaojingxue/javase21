@@ -3,6 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kaishengit.mapper.UserMapper">
+    <select id="findParams" parameterType="map" resultType="User">
+        SELECT *FROM message
+        <where>
+            <if test="id != null and id != ''">
+                id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+               AND name = #{name}
+            </if>
+            <if test="pwd != null and pwd != ''">
+                and pwd = #{pwd}
+            </if>
+
+        </where>
+    </select>
+    <select id="findParam" resultType="User">
+        SELECT * FROM  message WHERE name=#{name} AND pwd=#{pwd}
+    </select>
+    <select id="findMap" parameterType="map" resultType="User">
+        SELECT *FROM message WHERE name=#{name} AND pwd=#{pwd}
+    </select>
     <select id="findById" parameterType="int" resultType="User">
         SELECT * FROM message WHERE id=#{id}
 
@@ -13,7 +34,9 @@
     <delete id="removeName" parameterType="String">
         DELETE FROM message WHERE name=#{name}
     </delete>
-    <insert id="addUser" parameterType="User">
+    <!--需要获取插入值得自增列数值，添加两个参数 useGeneratedKeys="true" keyProperty="id"
+     执行完插入后，从插入对象中getId这个值-->
+    <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO message (name,pwd) VALUES (#{name},#{pwd})
     </insert>
     <update id="updateUser" parameterType="com.kaishengit.pojo.User">
