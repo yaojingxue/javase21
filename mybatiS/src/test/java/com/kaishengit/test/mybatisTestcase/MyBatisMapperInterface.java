@@ -53,8 +53,16 @@ public class MyBatisMapperInterface {
         SqlSession session= MyBatisUtil.getSqlSession();
         UserMapper userMapper=session.getMapper(UserMapper.class);
         User user=userMapper.findById(2);
+
         logger.debug("{}",user);
         session.close();
+
+        SqlSession session2= MyBatisUtil.getSqlSession();
+        UserMapper userMapper2=session2.getMapper(UserMapper.class);
+        User user2=userMapper2.findById(2);
+
+        logger.debug("{}",user2);
+        session2.close();
     }
     @Test
     public void testfindAll(){

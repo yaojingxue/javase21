@@ -1,9 +1,12 @@
 package com.kaishengit.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by acer on 2017/4/11.
  */
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1633010262852550215L;
     private   Integer id;
     private   String name;
     private String pwd;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="userdao" class="com.kaishengit.DAO.userDao" />
+    <bean id="userService" class="com.kaishengit.service.userDaoService">
+        <property name="userDao" ref="userdao"/>
+    </bean>
+<!-- 延迟加载<bean id="userdao" class="com.kaishengit.DAO.userDao" lazy-init="true"/> 还有个属性scope 默认singleton。改为prototype 则不是单例-->
+<!--<alias name="userdao" alias="mydao"/>-->
+    <!--别名 要么把id属性改为name名字逗号隔开-->
+</beans>
